@@ -1,0 +1,17 @@
+# Core
+streamlit>=1.30
+pandas>=2.0
+requests>=2.31
+
+# Auto-refresh (makes the dashboard "move" on a timer)
+streamlit-autorefresh>=1.0
+
+# Aggregator data (global indices incl. Nifty/Sensex, FX, commodities, VIX, crypto)
+yfinance>=0.2.40
+
+# Daily downloadable report (Excel + PDF)
+openpyxl>=3.1
+reportlab>=4.0
+
+# Chart image embedded in the PDF report
+matplotlib>=3.7
