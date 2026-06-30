@@ -1,0 +1,38 @@
+# .github/workflows/email-daily-report.yml
+# Emails the daily market PDF every weekday morning.
+# FREE: GitHub Actions (public repo = unlimited, private = 2000 min/month)
+#       + Gmail SMTP (500 emails/day free).
+#
+# ONE-TIME SETUP (in your repo → Settings → Secrets → Actions):
+#   GMAIL_USER    = your Gmail address
+#   GMAIL_APP_PWD = 16-char App Password (Google Account → Security → App passwords)
+#   MAIL_TO       = comma-separated recipients
+#   FRED_KEY      = your FRED API key
+
+name: Daily Market Report Email
+
+on:
+  schedule:
+    - cron: "0 4 * * 1-5"   # 3:00 UTC = 9:30 AM IST, Mon-Fri only
+  workflow_dispatch:          # manual trigger from Actions tab
+
+jobs:
+  send-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install yfinance requests reportlab
+
+      - name: Generate and email report
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PWD: ${{ secrets.GMAIL_APP_PWD }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          FRED_KEY: ${{ secrets.FRED_KEY }}
+        run: python send_report.py
