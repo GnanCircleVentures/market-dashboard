@@ -23,3 +23,4 @@ jobs:
           FRED_KEY: ${{ secrets.FRED_KEY }}
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
         run: python send_report.py
+        
