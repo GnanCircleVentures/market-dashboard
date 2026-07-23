@@ -108,7 +108,7 @@ LATEST_INDIA_CPI = ("4.38", "Jun 2026", "3.93")  # released 13 Jul 2026
 # TICKERS (Yahoo Finance)
 # ---------------------------------------------------------------------------
 EQUITIES = [
-    ("India", "Nifty 50", "^NSEI"), ("India", "Sensex", "^BSESN"),
+    ("Ind", "Nifty 50", "^NSEI"), ("Ind", "Sensex", "^BSESN"),
     ("US", "S&P 500", "^GSPC"), ("US", "Nasdaq", "^IXIC"),
     ("US", "Dow Jones", "^DJI"), ("Germany", "DAX", "^GDAXI"),
     ("UK", "FTSE 100", "^FTSE"), ("China", "Shanghai Composite", "000001.SS"),
